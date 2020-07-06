@@ -175,7 +175,9 @@ jobs:
           command: |
             bash .circleci/deploy.bash pypi
 
-  nightly:
+workflows:
+  version: 2
+  test:
     triggers:
       - schedule:
           cron: "0 0 * * *"
@@ -183,11 +185,6 @@ jobs:
             branches:
               only:
                 - master
-
-
-workflows:
-  version: 2
-  test:
     jobs:
       - pre-checks
       - linux-python-38:
