@@ -175,16 +175,10 @@ jobs:
           command: |
             bash .circleci/deploy.bash pypi
 
+
 workflows:
   version: 2
   test:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-              only:
-                - master
     jobs:
       - pre-checks
       - linux-python-38:
